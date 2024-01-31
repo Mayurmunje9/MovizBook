@@ -1,24 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React from "react";
 
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+// import ShowSummary from "./Components/Summary.js";
+import ShowsList from "./Components/ShowList";
+import ShowDetails from "./Components/ShowDetails";
+import BookTicketForm from "./Components/BookTicketForm.js";
+window.React = require("react");
+
+// Add this in your component file
+require("react-dom");
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div>
+              <ShowsList />
+            </div>
+          }
+        />
+        <Route
+          path="/show/:id"
+          element={
+            <div>
+              <ShowDetails />
+            </div>
+          }
+        />
+        {/* <Route
+          path="/show/:id/summary"
+          element={
+            <div>
+              <ShowSummary />
+            </div>
+          }
+        /> */}
+          <Route
+     path="/show/:id/book"
+          element={
+            <div>
+              <BookTicketForm />
+            </div>
+          }
+        />
+      </Routes>
+    </Router>
   );
 }
 
